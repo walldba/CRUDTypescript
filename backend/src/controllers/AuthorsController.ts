@@ -2,7 +2,7 @@ import { validate } from "class-validator";
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Authors } from "../entity/Authors";
-import AuthorRepository from "../repositories/AuthorRepository";
+import AuthorRepository from "../repositories/AuthorsRepository";
 
   export const saveUser = 
   async (request: Request, response: Response) => {

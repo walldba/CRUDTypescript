@@ -2,7 +2,7 @@ import { validate } from "class-validator";
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Users } from "../entity/Users";
-import UserRepository from "../repositories/UserRepository";
+import UserRepository from "../repositories/UsersRepository";
 import encrypt from "../utils/password";
 
   export const saveUser = 
