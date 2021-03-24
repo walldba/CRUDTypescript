@@ -3,10 +3,10 @@ import * as controller from "../controllers/UsersController";
 
 const routes = Router();
 
-routes.post("/save", controller.saveUser)
+routes.post("/save", controller.saveUser);
 
-routes.get("/", (request: Request, response: Response) => {
-    return response.json({ message: "Hello World" });
-  });
+routes.get("/find", controller.findUsers);
 
-  export default routes;
+routes.get("/findone", controller.findOneUser);
+
+export default routes;

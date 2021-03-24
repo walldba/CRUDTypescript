@@ -3,10 +3,10 @@ import * as controller from "../controllers/BooksController";
 
 const routes = Router();
 
-routes.post("/save", controller.saveUser)
+routes.post("/save", controller.saveUser);
 
 routes.get("/", (request: Request, response: Response) => {
-    return response.json({ message: "Hello World" });
-  });
+  return response.json({ message: "Hello World" });
+});
 
-  export default routes;
+export default routes;
