@@ -18,7 +18,7 @@ export class Users {
     login: number;
 
     @Column()
-    password: number;
+    password: string;
 
     @Column()
     active: boolean;

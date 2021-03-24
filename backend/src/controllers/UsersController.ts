@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Users } from "../entity/Users";
 import UserRepository from "../repositories/UserRepository";
+import encrypt from "../utils/password";
 
   export const saveUser = 
   async (request: Request, response: Response) => {
@@ -11,8 +12,9 @@ import UserRepository from "../repositories/UserRepository";
       
       const user = getRepository(Users).create(
       {
-        firstName,login,email,password,active
+        firstName,login,email,active
       });
+      user.password = await encrypt(password);
       
       const errors = await validate(user);
       if(errors.length > 0)
