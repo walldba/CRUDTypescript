@@ -2,7 +2,7 @@ import { validate } from "class-validator";
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Users } from "../entity/Users";
-import * as repository from "../repositories/userRepository";
+import UserRepository from "../repositories/UserRepository";
 
   export const saveUser = 
   async (request: Request, response: Response) => {
@@ -19,7 +19,7 @@ import * as repository from "../repositories/userRepository";
         return response.status(400).send(errors);
       else
       {
-        const result = await repository.saveUser(user);
+        const result = await UserRepository.save(user);
         return response.json(result);
       }
     } catch (error) {
