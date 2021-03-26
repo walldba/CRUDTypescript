@@ -65,3 +65,16 @@ export const updateOneBook = async (request: Request, response: Response) => {
     return response.status(400).send(error);
   }
 };
+
+export const deleteOne = async (request: Request, response: Response) => {
+  try {
+    const id = request.query.id as string;
+
+    const result = await BookRepository.delete(id);
+
+    if (result) return response.json(`Book ${id} was removed`);
+    return response.json({ message: `Book ${id} Not found` });
+  } catch (error) {
+    return response.status(400).send(error);
+  }
+};

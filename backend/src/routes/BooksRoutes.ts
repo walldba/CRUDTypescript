@@ -11,4 +11,6 @@ routes.get("/findone", controller.findOneBook);
 
 routes.put("/updateOne", controller.updateOneBook);
 
+routes.post("/deleteOne", controller.deleteOne);
+
 export default routes;

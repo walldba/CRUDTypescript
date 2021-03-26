@@ -53,18 +53,26 @@ export const findOneUser = async (request: Request, response: Response) => {
 
 export const updateOne = async (request: Request, response: Response) => {
   try {
-    const { id } = request.params;
-    const { firstName, login, email, password, active } = request.body;
+    const id = request.query.id as string;
+    const user = request.body;
 
-    const user = getRepository(Users).create({
-      firstName,
-      login,
-      email,
-      password,
-      active,
-    });
     const result = await UserRepository.update(id, user);
-    return response.json(result);
+
+    if (result) return response.json(result);
+    return response.json({ message: `User ${id} Not found` });
+  } catch (error) {
+    return response.status(400).send(error);
+  }
+};
+
+export const deleteOne = async (request: Request, response: Response) => {
+  try {
+    const id = request.query.id as string;
+
+    const result = await UserRepository.delete(id);
+
+    if (result) return response.json(`User ${id} was removed`);
+    return response.json({ message: `User ${id} Not found` });
   } catch (error) {
     return response.status(400).send(error);
   }

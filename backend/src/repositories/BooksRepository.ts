@@ -13,15 +13,13 @@ class BookRepository implements IRepository<Books> {
     return await getRepository(Books).findOne(id);
   }
   async update(id: string, entity: Books): Promise<Books> {
-    return new Books();
-    // const user = await getRepository(Books).findOne({ where: { id: id } });
-    // const user = new Books();
-    // return await getRepository(Books).update(user);
+    await getRepository(Books).update(id, entity);
+
+    return (await getRepository(Books).findOne(id)) as Books;
   }
-  async delete(id: string): Promise<Books> {
-    return new Books();
-    // let user = await getRepository(Books).findOne(id);
-    // return await getRepository(Books).remove(user);
+  async delete(id: string): Promise<boolean> {
+    const row = await getRepository(Books).delete(id);
+    return row.affected === 1;
   }
 }
 

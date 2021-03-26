@@ -11,4 +11,6 @@ routes.get("/findone", controller.findOneUser);
 
 routes.put("/updateOne", controller.updateOne);
 
+routes.post("/deleteOne", controller.deleteOne);
+
 export default routes;

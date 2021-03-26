@@ -13,15 +13,13 @@ class AuthorRepository implements IRepository<Authors> {
     return await getRepository(Authors).findOne(id);
   }
   async update(id: string, entity: Authors): Promise<Authors> {
-    return new Authors();
-    // const user = await getRepository(Authors).findOne({ where: { id: id } });
-    // const user = new Authors();
-    // return await getRepository(Authors).update(user);
+    await getRepository(Authors).update(id, entity);
+
+    return (await getRepository(Authors).findOne(id)) as Authors;
   }
-  async delete(id: string): Promise<Authors> {
-    return new Authors();
-    // let user = await getRepository(Authors).findOne(id);
-    // return await getRepository(Authors).remove(user);
+  async delete(id: string): Promise<boolean> {
+    const row = await getRepository(Authors).delete(id);
+    return row.affected === 1;
   }
 }
 

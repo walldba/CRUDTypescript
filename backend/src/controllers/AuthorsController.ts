@@ -57,3 +57,16 @@ export const updateOne = async (request: Request, response: Response) => {
     return response.status(400).send(error);
   }
 };
+
+export const deleteOne = async (request: Request, response: Response) => {
+  try {
+    const id = request.query.id as string;
+
+    const result = await AuthorRepository.delete(id);
+
+    if (result) return response.json(`Author ${id} was removed`);
+    return response.json({ message: `Author ${id} Not found` });
+  } catch (error) {
+    return response.status(400).send(error);
+  }
+};

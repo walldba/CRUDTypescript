@@ -1,4 +1,4 @@
-import { getRepository, UpdateResult } from "typeorm";
+import { getRepository } from "typeorm";
 import { Users } from "../entity/Users";
 import { IRepository } from "../interfaces/IRepository";
 
@@ -12,16 +12,14 @@ class UserRepository implements IRepository<Users> {
   async findOne(id: string): Promise<Users | undefined> {
     return await getRepository(Users).findOne(id);
   }
-  async update(id: string, entity: Users): Promise<Users> {
-    return new Users();
-    // const user = await getRepository(Users).findOne({ where: { id: id } });
-    // const user = new Users();
-    // return await getRepository(Users).update(user);
+  async update(id: string, entity: any): Promise<Users> {
+    await getRepository(Users).update(id, entity);
+
+    return (await getRepository(Users).findOne(id)) as Users;
   }
-  async delete(id: string): Promise<Users> {
-    return new Users();
-    // let user = await getRepository(Users).findOne(id);
-    // return await getRepository(Users).remove(user);
+  async delete(id: string): Promise<boolean> {
+    const row = await getRepository(Users).delete(id);
+    return row.affected === 1;
   }
 }
 
