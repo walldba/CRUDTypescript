@@ -7,10 +7,10 @@ routes.post("/save", controller.saveAuthor);
 
 routes.get("/find", controller.findAuthors);
 
-routes.get("/findone", controller.findOneAuthor);
+routes.get("/findone/:id", controller.findOneAuthor);
 
-routes.put("/updateOne", controller.updateOne);
+routes.put("/updateOne/:id", controller.updateOne);
 
-routes.post("/deleteOne", controller.deleteOne);
+routes.post("/deleteOne/:id", controller.deleteOne);
 
 export default routes;

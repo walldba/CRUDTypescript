@@ -41,7 +41,7 @@ export const findUsers = async (request: Request, response: Response) => {
 
 export const findOneUser = async (request: Request, response: Response) => {
   try {
-    const { id } = request.body;
+    const { id } = request.params;
     const result = await UserRepository.findOne(id);
 
     if (result) return response.json(result);
@@ -53,7 +53,7 @@ export const findOneUser = async (request: Request, response: Response) => {
 
 export const updateOne = async (request: Request, response: Response) => {
   try {
-    const id = request.query.id as string;
+    const { id } = request.params;
     const user = request.body;
 
     const result = await UserRepository.update(id, user);
@@ -67,7 +67,7 @@ export const updateOne = async (request: Request, response: Response) => {
 
 export const deleteOne = async (request: Request, response: Response) => {
   try {
-    const id = request.query.id as string;
+    const { id } = request.params;
 
     const result = await UserRepository.delete(id);
 

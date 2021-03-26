@@ -34,7 +34,7 @@ export const findAuthors = async (request: Request, response: Response) => {
 
 export const findOneAuthor = async (request: Request, response: Response) => {
   try {
-    const { id } = request.body;
+    const { id } = request.params;
     const result = await AuthorRepository.findOne(id);
 
     if (result) return response.json(result);
@@ -60,7 +60,7 @@ export const updateOne = async (request: Request, response: Response) => {
 
 export const deleteOne = async (request: Request, response: Response) => {
   try {
-    const id = request.query.id as string;
+    const { id } = request.params;
 
     const result = await AuthorRepository.delete(id);
 

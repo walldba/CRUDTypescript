@@ -7,10 +7,10 @@ routes.post("/save", controller.saveBook);
 
 routes.get("/find", controller.findBooks);
 
-routes.get("/findone", controller.findOneBook);
+routes.get("/findone/:id", controller.findOneBook);
 
-routes.put("/updateOne", controller.updateOneBook);
+routes.put("/updateOne/:id", controller.updateOne);
 
-routes.post("/deleteOne", controller.deleteOne);
+routes.post("/deleteOne/:id", controller.deleteOne);
 
 export default routes;

@@ -38,7 +38,7 @@ export const findBooks = async (request: Request, response: Response) => {
 
 export const findOneBook = async (request: Request, response: Response) => {
   try {
-    const id = request.query.id as string;
+    const { id } = request.params;
     const result = await BookRepository.findOne(id);
 
     if (result) return response.json(result);
@@ -48,7 +48,7 @@ export const findOneBook = async (request: Request, response: Response) => {
   }
 };
 
-export const updateOneBook = async (request: Request, response: Response) => {
+export const updateOne = async (request: Request, response: Response) => {
   try {
     const { id } = request.params;
     const { name, description, authors } = request.body;
@@ -68,7 +68,7 @@ export const updateOneBook = async (request: Request, response: Response) => {
 
 export const deleteOne = async (request: Request, response: Response) => {
   try {
-    const id = request.query.id as string;
+    const { id } = request.params;
 
     const result = await BookRepository.delete(id);
 
