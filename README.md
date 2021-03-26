@@ -1,23 +1,23 @@
 <div align="center">
   <h3><a id="user-content--tecnologies" class="anchor" aria-hidden="true" href="#-tecnologies">TECNOLOGIES</a></h3>
   <a href="https://nodejs.org/en/" rel="nofollow">
-    <img alt="NodeJs" src="https://img.shields.io/badge/Node-purple">&nbsp;&nbsp;&nbsp;
+    <img alt="NodeJs" src="https://img.shields.io/badge/Node-blue">&nbsp;&nbsp;&nbsp;
   </a>
 
   <a href="https://www.typescriptlang.org/" rel="nofollow">
-    <img alt="Typescript" src="https://img.shields.io/badge/Typescript-purple">&nbsp;&nbsp;&nbsp;
+    <img alt="Typescript" src="https://img.shields.io/badge/Typescript-blue">&nbsp;&nbsp;&nbsp;
   </a>
                                                                       
   <a href="https://typeorm.io/" rel="nofollow">
-    <img alt="TypeORM" src="https://img.shields.io/badge/TypeORM-purple">&nbsp;&nbsp;&nbsp;
+    <img alt="TypeORM" src="https://img.shields.io/badge/TypeORM-blue">&nbsp;&nbsp;&nbsp;
   </a>
                                                                       
   <a href="https://www.postgresql.org/" rel="nofollow">
-    <img alt="Postgres" src="https://img.shields.io/badge/Postgres-purple">&nbsp;&nbsp;&nbsp;
+    <img alt="Postgres" src="https://img.shields.io/badge/Postgres-blue">&nbsp;&nbsp;&nbsp;
   </a>
 
   <a href="https://github.com/typestack/class-validator" rel="nofollow">
-    <img alt="ClassValidator" src="https://img.shields.io/badge/ClassValidator-purple">&nbsp;&nbsp;&nbsp;
+    <img alt="ClassValidator" src="https://img.shields.io/badge/ClassValidator-blue">&nbsp;&nbsp;&nbsp;
   </a>
 </div><hr/><br/>
 
