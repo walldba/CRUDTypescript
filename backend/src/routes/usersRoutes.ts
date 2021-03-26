@@ -9,4 +9,6 @@ routes.get("/find", controller.findUsers);
 
 routes.get("/findone", controller.findOneUser);
 
+routes.put("/updateOne", controller.updateOne);
+
 export default routes;

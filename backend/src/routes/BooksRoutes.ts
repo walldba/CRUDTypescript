@@ -3,10 +3,12 @@ import * as controller from "../controllers/BooksController";
 
 const routes = Router();
 
-routes.post("/save", controller.saveUser);
+routes.post("/save", controller.saveBook);
 
-routes.get("/", (request: Request, response: Response) => {
-  return response.json({ message: "Hello World" });
-});
+routes.get("/find", controller.findBooks);
+
+routes.get("/findone", controller.findOneBook);
+
+routes.put("/updateOne", controller.updateOneBook);
 
 export default routes;

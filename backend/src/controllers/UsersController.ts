@@ -31,7 +31,9 @@ export const saveUser = async (request: Request, response: Response) => {
 export const findUsers = async (request: Request, response: Response) => {
   try {
     const result = await UserRepository.find();
-    return response.json(result);
+
+    if (result) return response.json(result);
+    return response.json({ message: `User Not found` });
   } catch (error) {
     return response.status(400).send(error);
   }
@@ -41,6 +43,27 @@ export const findOneUser = async (request: Request, response: Response) => {
   try {
     const { id } = request.body;
     const result = await UserRepository.findOne(id);
+
+    if (result) return response.json(result);
+    return response.json({ message: `User ${id} Not found` });
+  } catch (error) {
+    return response.status(400).send(error);
+  }
+};
+
+export const updateOne = async (request: Request, response: Response) => {
+  try {
+    const { id } = request.params;
+    const { firstName, login, email, password, active } = request.body;
+
+    const user = getRepository(Users).create({
+      firstName,
+      login,
+      email,
+      password,
+      active,
+    });
+    const result = await UserRepository.update(id, user);
     return response.json(result);
   } catch (error) {
     return response.status(400).send(error);

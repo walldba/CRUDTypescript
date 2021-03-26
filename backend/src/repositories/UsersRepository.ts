@@ -1,4 +1,4 @@
-import { getRepository } from "typeorm";
+import { getRepository, UpdateResult } from "typeorm";
 import { Users } from "../entity/Users";
 import { IRepository } from "../interfaces/IRepository";
 
@@ -13,10 +13,15 @@ class UserRepository implements IRepository<Users> {
     return await getRepository(Users).findOne(id);
   }
   async update(id: string, entity: Users): Promise<Users> {
-    throw new Error("Method not implemented.");
+    return new Users();
+    // const user = await getRepository(Users).findOne({ where: { id: id } });
+    // const user = new Users();
+    // return await getRepository(Users).update(user);
   }
   async delete(id: string): Promise<Users> {
-    throw new Error("Method not implemented.");
+    return new Users();
+    // let user = await getRepository(Users).findOne(id);
+    // return await getRepository(Users).remove(user);
   }
 }
 
