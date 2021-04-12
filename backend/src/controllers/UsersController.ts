@@ -1,9 +1,9 @@
-import { validate } from "class-validator";
-import { Request, Response } from "express";
-import { getRepository } from "typeorm";
-import { Users } from "../entity/Users";
-import UserRepository from "../repositories/UsersRepository";
-import encrypt from "../utils/password";
+import { validate } from 'class-validator';
+import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
+import { Users } from '../entity/Users';
+import UserRepository from '../repositories/UsersRepository';
+import encrypt from '../utils/password';
 
 export const saveUser = async (request: Request, response: Response) => {
   try {
@@ -13,13 +13,15 @@ export const saveUser = async (request: Request, response: Response) => {
       firstName,
       login,
       email,
+      password,
       active,
     });
-    user.password = await encrypt(password);
 
     const errors = await validate(user);
+
     if (errors.length > 0) return response.status(400).send(errors);
     else {
+      user.password = await encrypt(password);
       const result = await UserRepository.save(user);
       return response.json(result);
     }

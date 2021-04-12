@@ -1,14 +1,14 @@
-import { IsEmail } from "class-validator";
+import { IsEmail } from 'class-validator';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
 @Entity()
 export class Users {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()

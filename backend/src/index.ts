@@ -1,10 +1,9 @@
-import { createConnection } from "typeorm";
-import express from "express";
-import cors from "cors";
-import usersRoutes from "./routes/UsersRoutes";
-import authorsRoutes from "./routes/AuthorsRoutes";
-import booksRoutes from "./routes/BooksRoutes";
-
+import { createConnection } from 'typeorm';
+import express from 'express';
+import cors from 'cors';
+import usersRoutes from './routes/UsersRoutes';
+import authorsRoutes from './routes/AuthorsRoutes';
+import booksRoutes from './routes/BooksRoutes';
 
 const app = express();
 createConnection();
