@@ -5,12 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-} from "typeorm";
-import { Authors } from "./Authors";
+} from 'typeorm';
+import { Authors } from './Authors';
 
 @Entity()
 export class Books {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
