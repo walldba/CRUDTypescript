@@ -1,8 +1,8 @@
-import { validate } from "class-validator";
-import { Request, Response } from "express";
-import { getRepository } from "typeorm";
-import { Authors } from "../entity/Authors";
-import AuthorRepository from "../repositories/AuthorsRepository";
+import { validate } from 'class-validator';
+import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
+import { Authors } from '../entity/Authors';
+import AuthorRepository from '../repositories/AuthorsRepository';
 
 export const saveAuthor = async (request: Request, response: Response) => {
   try {
@@ -52,7 +52,8 @@ export const updateOne = async (request: Request, response: Response) => {
     const author = getRepository(Authors).create({ name });
 
     const result = await AuthorRepository.update(id, author);
-    return response.json(result);
+    if (result) return response.json(result);
+    return response.json({ message: `Author ${id} Not found` });
   } catch (error) {
     return response.status(400).send(error);
   }

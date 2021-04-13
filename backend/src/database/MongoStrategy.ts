@@ -1,4 +1,3 @@
-import { promisify } from 'node:util';
 import { IRepository } from './interfaces/IRepository';
 
 export class MongoStrategy<T> implements IRepository<T> {

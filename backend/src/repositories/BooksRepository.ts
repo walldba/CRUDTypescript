@@ -1,17 +1,24 @@
-import { getRepository } from "typeorm";
-import { Books } from "../entity/Books";
-import { IRepository } from "../interfaces/IRepository";
+import { getRepository } from 'typeorm';
+import { ContextStrategy } from '../database/ContextStrategy';
+import { IRepository } from '../database/interfaces/IRepository';
+import { PostgresStrategy } from '../database/PostgresStrategy';
+import { Books } from '../entity/Books';
 
 class BookRepository implements IRepository<Books> {
+  private _context = new ContextStrategy(new PostgresStrategy(Books));
+
   async save(entity: Books): Promise<Books> {
-    return await getRepository(Books).save(entity);
+    return await this._context.save(entity);
   }
+
   async find(): Promise<Books[]> {
-    return await getRepository(Books).find();
+    return await this._context.find();
   }
+
   async findOne(id: string): Promise<Books | undefined> {
     return await getRepository(Books).findOne(id);
   }
+
   async update(id: string, entity: Books): Promise<Books> {
     await getRepository(Books).update(id, entity);
 
