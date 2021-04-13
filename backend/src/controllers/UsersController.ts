@@ -56,12 +56,25 @@ export const findOneUser = async (request: Request, response: Response) => {
 export const updateOne = async (request: Request, response: Response) => {
   try {
     const { id } = request.params;
-    const user = request.body;
+    const { firstName, login, email, password, active } = request.body;
 
-    const result = await UserRepository.update(id, user);
+    const user = getRepository(Users).create({
+      firstName,
+      login,
+      email,
+      password,
+      active,
+    });
 
-    if (result) return response.json(result);
-    return response.json({ message: `User ${id} Not found` });
+    const errors = await validate(user);
+
+    if (errors.length > 0) return response.status(400).send(errors);
+    else {
+      user.password = await encrypt(password);
+      const result = await UserRepository.update(id, user);
+      if (result) return response.json(result);
+      return response.json({ message: `User ${id} Not found` });
+    }
   } catch (error) {
     return response.status(400).send(error);
   }

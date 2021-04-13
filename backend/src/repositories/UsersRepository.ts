@@ -20,7 +20,7 @@ class UserRepository implements IRepository<Users> {
     return await getRepository(Users).findOne(id);
   }
 
-  async update(id: string, entity: any): Promise<Users> {
+  async update(id: string, entity: Users): Promise<Users> {
     await getRepository(Users).update(id, entity);
 
     return (await getRepository(Users).findOne(id)) as Users;
