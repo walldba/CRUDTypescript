@@ -1,17 +1,25 @@
-import { getRepository } from "typeorm";
-import { Users } from "../entity/Users";
-import { IRepository } from "../interfaces/IRepository";
+import { getRepository } from 'typeorm';
+import { ContextStrategy } from '../database/ContextStrategy';
+import { IRepository } from '../database/interfaces/IRepository';
+import { MongoStrategy } from '../database/MongoStrategy';
+import { PostgresStrategy } from '../database/PostgresStrategy';
+import { Users } from '../entity/Users';
 
 class UserRepository implements IRepository<Users> {
+  private _context = new ContextStrategy(new PostgresStrategy(Users));
+
   async save(entity: Users): Promise<Users> {
-    return await getRepository(Users).save(entity);
+    return await this._context.save(entity);
   }
+
   async find(): Promise<Users[]> {
-    return await getRepository(Users).find();
+    return await this._context.find();
   }
+
   async findOne(id: string): Promise<Users | undefined> {
     return await getRepository(Users).findOne(id);
   }
+
   async update(id: string, entity: any): Promise<Users> {
     await getRepository(Users).update(id, entity);
 
@@ -24,4 +32,3 @@ class UserRepository implements IRepository<Users> {
 }
 
 export default new UserRepository();
-// export const saveUser = async(user : Users) => await getRepository(Users).save(user);

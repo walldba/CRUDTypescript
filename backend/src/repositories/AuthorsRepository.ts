@@ -1,6 +1,6 @@
-import { getRepository } from "typeorm";
-import { Authors } from "../entity/Authors";
-import { IRepository } from "../interfaces/IRepository";
+import { getRepository } from 'typeorm';
+import { Authors } from '../entity/Authors';
+import { IRepository } from '../interfaces/IRepository';
 
 class AuthorRepository implements IRepository<Authors> {
   async save(entity: Authors): Promise<Authors> {
