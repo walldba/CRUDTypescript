@@ -7,7 +7,7 @@ export class ContextStrategy<T> {
     this.strategy = strategy;
   }
 
-  async save(entity: T): Promise<T> {
+  async save(entity: T): Promise<T | boolean> {
     return await this.strategy.save(entity);
   }
 

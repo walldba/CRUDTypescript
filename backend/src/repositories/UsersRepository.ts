@@ -8,7 +8,7 @@ import { Users } from '../entity/Users';
 class UserRepository implements IRepository<Users> {
   private _context = new ContextStrategy(new PostgresStrategy(Users));
 
-  async save(entity: Users): Promise<Users> {
+  async save(entity: Users): Promise<Users | boolean> {
     return await this._context.save(entity);
   }
 
